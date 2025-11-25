@@ -1,2 +1,2 @@
 # LOTR-Chatbot
-Basic Lord of the Rings chatbot
+Basic Lord of the Rings chatbot - in Czech
