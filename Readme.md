@@ -11,7 +11,7 @@ používat REST API
 
 komunikovat přes jednoduché webové rozhraní (index.html)
 
-📂 Struktura projektu
+Struktura projektu
 RAG/
 │
 ├── data/                 # TXT soubory trilogie LOTR
@@ -25,7 +25,7 @@ RAG/
 ├── .env                  # API klíče pro OpenAI
 └── README.md
 
-⚙️ Instalace & spuštění
+Instalace & spuštění
 1️⃣ Klonování a příprava prostředí
 git clone <repo>
 cd RAG
@@ -39,7 +39,7 @@ Vytvoř .env:
 
 OPENAI_API_KEY=sk-xxxx
 
-📥 1. Vytvoření vektorové databáze
+1. Vytvoření vektorové databáze
 
 Spusť:
 
@@ -56,7 +56,7 @@ vytvoří embeddingy pomocí text-embedding-3-large
 
 uloží je do chroma_db/
 
-🔍 2. Dotazování přes CLI
+2. Dotazování přes CLI
 
 Použití:
 
@@ -84,7 +84,7 @@ Aragorn je...
 - data/lotr1.txt
 - data/lotr2.txt
 
-🌐 3. REST API (FastAPI)
+3. REST API (FastAPI)
 
 Spuštění:
 
@@ -108,7 +108,7 @@ Odpověď:
   "chunks_used": 10
 }
 
-💬 4. Webové rozhraní (index.html)
+4. Webové rozhraní (index.html)
 
 otevři index.html v prohlížeči
 
@@ -116,8 +116,8 @@ frontend se připojuje na http://127.0.0.1:8000/query
 
 zadáš otázku, backend najde relevantní části knihy a vrátí odpověď
 
-🧩 Popis jednotlivých souborů
-🟦 create_database.py
+Popis jednotlivých souborů
+create_database.py
 
 načítá dokumenty (UTF-8 → CP1250 → fallback)
 
@@ -127,7 +127,7 @@ generuje embeddingy (text-embedding-3-large)
 
 ukládá databázi do ChromaDB
 
-🟦 query_data.py
+query_data.py
 
 CLI klient pro dotazy
 
@@ -137,7 +137,7 @@ volá ChatOpenAI
 
 vypisuje odpovědi + zdroje
 
-🟦 api.py
+api.py
 
 FastAPI server
 
@@ -147,7 +147,7 @@ CORS povoleno
 
 používá stejnou RAG pipeline jako CLI
 
-🟦 index.html
+index.html
 
 jednoduchý JavaScript frontend
 
@@ -155,7 +155,7 @@ odešle dotaz → zobrazí odpověď + použité zdroje
 
 stylizace v čistém CSS
 
-📦 Doporučený requirements.txt
+Doporučený requirements.txt
 
 Pokud ho chceš doplnit:
 
@@ -171,7 +171,7 @@ langchain-chroma
 openai
 chromadb
 
-🧪 Test funkčnosti
+Test funkčnosti
 
 spusť FastAPI server:
 
