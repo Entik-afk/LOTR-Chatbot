@@ -9,7 +9,8 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from fastapi.middleware.cors import CORSMiddleware
 
-
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 # ===== CONFIG =====
 load_dotenv()
@@ -30,6 +31,11 @@ Answer:
 # ===== FASTAPI APP =====
 app = FastAPI(title="RAG API", version="1.0")
 
+# Jednou při startu aplikace, ne při každém requestu
+embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
+db = Chroma(persist_directory=CHROMA_DB_PATH, embedding_function=embeddings)
+model = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
@@ -38,7 +44,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+@app.get("/")
+def root():
+    return FileResponse("index.html")
 
 # ===== REQUEST MODEL =====
 class QueryRequest(BaseModel):
@@ -52,12 +60,7 @@ def query_rag(request: QueryRequest):
     query_text = request.query
     k = request.k
 
-    # Load embeddings + database
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
-    db = Chroma(
-        persist_directory=CHROMA_DB_PATH,
-        embedding_function=embeddings
-    )
+
 
     # Retrieve relevant chunks
     results = db.similarity_search(query_text, k=k)
@@ -75,12 +78,7 @@ def query_rag(request: QueryRequest):
         question=query_text
     )
 
-    # Chat model
-    model = ChatOpenAI(
-        model="gpt-4o-mini",
-        temperature=0
-    )
-
+   
     response = model.invoke(prompt)
 
     # Sources
