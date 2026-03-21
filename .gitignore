@@ -24,9 +24,6 @@ env/
 *.DS_Store
 Thumbs.db
 
-# Chroma / data
-chroma_db/
-data/*.txt
 
 # Logs / temp
 *.log
