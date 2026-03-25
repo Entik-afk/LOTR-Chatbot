@@ -1,4 +1,4 @@
-AG – Retrieval-Augmented Generation pro trilogii Pán Prstenů
+RAG – Retrieval-Augmented Generation pro trilogii Pán Prstenů
 
 Tento projekt implementuje kompletní RAG systém (Retrieval-Augmented Generation) nad texty trilogie Pán Prstenů od J. R. R. Tolkiena.
 Systém umožňuje:
