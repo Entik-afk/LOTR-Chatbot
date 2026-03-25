@@ -90,8 +90,3 @@ def query_rag(request: QueryRequest):
         "chunks_used": len(results),
     }
 
-
-# ===== ROOT TEST =====
-@app.get("/")
-def root():
-    return {"message": "RAG API running!"}
