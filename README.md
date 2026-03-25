@@ -1,4 +1,4 @@
-# 🧙 LOTR Book Oracle — RAG Chatbot
+# LOTR Book Oracle — RAG Chatbot
 
 A Retrieval-Augmented Generation (RAG) system built over the full text of J.R.R. Tolkien's *The Lord of the Rings* trilogy. Ask anything about the books and get answers grounded directly in the source text.
 
